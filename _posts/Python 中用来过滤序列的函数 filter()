@@ -5,7 +5,9 @@ date: 2018-7-5
 categories: blog
 tags: [Python,notes]
 description: Python 中用来排序的函数-sorted()
----
+---  
+	
+
 # Python 中的排序函数--sorted() 
 
 > **现网上流传的 `sorted()` 函数的讲解大多数是 Python 2.x 的版本，其中涉及到的参数 `cmp` 因为运行速度问题已经不再使用，在 Python 3.x 的版本里面，如果使用 `cmp` 关键字函数 会导致一个 `TypeError` 异常。**
