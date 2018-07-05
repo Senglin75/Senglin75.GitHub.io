@@ -1,9 +1,9 @@
 ---
 layout: post
-title: 这是一个记录臭狗屎的网站
-date: 2018-6-27
+title: Python 中用来过滤序列的函数 filter()
+date: 2018-7-5
 categories: blog
-tags: [标签一,标签二]
+tags: [Python,notes]
 description: Python 中用来过滤序列的函数
 ---
 
