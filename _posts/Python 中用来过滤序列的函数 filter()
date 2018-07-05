@@ -1,83 +1,164 @@
-# Python 中用来过滤序列的函数-filter()
+---
+layout: post
+title: Python 中的排序函数-sorted()
+date: 2018-7-5
+categories: blog
+tags: [Python,notes]
+description: Python 中用来排序的函数-sorted()
+---
+# Python 中的排序函数--sorted() 
 
-**语法：**  filter(function, argument), filter() 通过传入的参数 argument，依次作用于筛选函数 function ，并通过筛选函数的返回值 True or False ，来决定是否保留或剔除元素。
-
-例如，从 1~10 里剔除奇数，筛选出偶数。
-
-
-	def is_odd(n) :
-		return n % 2 == 0
-		list(filter(is_odd, range(1, 11)))
-
-结果：
-		
-	[2, 4, 6, 8, 10]
-
-**注意：**  filter() 函数是 Python 内置的一个高阶函数,并且返回的是一个 Iterator，即返回的是一个惰性序列，因此需要强迫 filter() 完成计算结果，可通过 list() 函数来获取所有返回值。
-
-例如,剔除一个序列里面的空字符串。
-
-	def not_empty(n) :
-		return n and s.strip()
-	filter(not_empty,['a', ' abc', '', '  ', None])
+> **现网上流传的 `sorted()` 函数的讲解大多数是 Python 2.x 的版本，其中涉及到的参数 `cmp` 因为运行速度问题已经不再使用，在 Python 3.x 的版本里面，如果使用 `cmp` 关键字函数 会导致一个 `TypeError` 异常。**
 
 
-按下回车，会出现
-	<filter object at 0x00000000025964A8>
+---
+## 目录
 
-返回的是一个函数，说明 filter() 并没有完成计算结果，将最后一句改为
+[TOC]
 
-	list(filter(not_empty,['a', ' abc', '', '  ', None]))
+---
+### 语法
 
-可看到结果
+	sorted(iterable, /, * , key=None, reverse=False)
 
-	['a', ' abc']
+---
 
-**引申**
+### 参数说明
 
-strip(argument) 函数是一个只针对字符串里首位和末位元素的函数，对它们进行删除至首位和末尾都没有要删除的元素为止，并返回剩余的元素，不会删除掉中间的元素，并且由里面的参数 argument 决定要删除的是什么元素，strip() 默认删除首位和末位的空格或换行 (\n, \v, \t, \r, \f)
+**`iterable`：**可迭代对象，可直接作用于 `for` 循环的对象统称为可迭代对象。即 `sorted()` 函数针对的必须是可迭代对象。
 
+**`/，*` :** 可缺省参数，在使用 `sorted()` 函数时，可以忽略这两个参数。
 
-例如：
+**`key`：** 关键字参数，在使用该参数时，传入的必须是函数关键字，如 `len()` 函数，其关键字就是 `len`，使用 `key` 时，就应该为 `key = len`。`key` 默认为 `None`，即不调用 `key` 函数。
 
-	s = '\f\t\v\n\r 2  3'
-	s.strip()
+**`reverse`：**排序方式，其值只能是布尔值，`reverse = True`，意味着降序，`reverse = False`，意味着升序。`reverse` 默认为 `False`，即升序。
 
-结果为：
+---
 
-	'2  3'
+### `sorted()` 函数的相关属性
 
-strip(argument) 函数也可指定要删除的 argument 
+**`sorted()` 函数是 Python 中内置的函数，可以直接调用。**
 
 例如：
 
-	s = '12 abc 21'
-	s.strip('12')
+	sorted([5, 4, 3, 2, 1])
 
 结果：
+
+	[1, 2, 3, 4, 5]
+
+---
+
+**`sorted()` 函数是高阶函数可通过 `key` 参数实现自定义排序。**
+
+例如：
+
+	sorted([-5, 3, -2 ,4, 1], key = abs)
+
+结果：
+
+	[1, -2, 3, 4, -5]
+
+其过程相当于 `key` 通过绝对值函数 `abs()`，生成了一个新的 list `[5, 3, 2, 4, 1]`。
+
+	原始 list： [-5, 3, -2, 4, 1]
+
+	新 list  ： [5, 3, 2, 4, 1]
+
+而 `sorted()` 函数根据新 list 进行排序，也就是 `[1, 2, 3, 4, 5]`，再按照其对应关系，返回最终的值。
+
+	新 list 排序的结果： [1,  2,  3,  4,  5]
+	                     |   |   |   |   |
+	最终结果         ：  [1, -2,  3,  4, -5]
+
+---
+
+**`sorted()` 函数对字符串的排序在默认情况下，是根据字符串每一位的 `ASCII` 码值来进行排序。**
+
+例如：
+
+	sorted(['abc', 'Abc', 'aBc', 'ABc', 'bcd', 'Bcd'])
+
+结果：
+
+	['ABc', 'Abc', 'Bcd', 'aBc', 'abc', 'bcd']
+
+---
+
+**`sorted()` 函数可以通过 `reverse` 的值来决定是升序还是降序**
+
+升序
+
+	sorted([5, 4, 3, 2, 1], reverse = False)
+
+结果：
+
+	[1, 2, 3, 4, 5]
+
+降序
+
+	sorted([5, 4, 3, 2, 1], reverse = True)
 	
-	' abc '
+结果：
 
-练习 :
+	[5, 4, 3, 2, 1]
 
-	请打印出 100 以内的素数，结果应该为 2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97。
+---
 
+### 引申
+
+> **`sorted()` 函数返回的是一个新的 list，并不改变原序列，这点与 `sort()` 不同，并且 `sort()` 只针对 list 有用，而 `sorted()` 函数对所有 `Iterable` 可迭代对象都适用。**
+
+例如：
+```
+	old = [5, 4, 3, 2, 1]
+
+	new1 = sorted(old)
+
+	print('sorted() 函数排完序后 old 是:', old)  
+
+
+	old = [5, 4, 3, 2, 1]
+
+	new2 = old.sort
+
+	print('sort() 函数排完序后 old 是:', old) 
+```
+结果：
+
+	sorted() 函数排完序后 old 是: [5, 4, 3, 2, 1]
+
+	sort() 函数排完序后 old 是: [1, 2, 3, 4, 5]
+
+---
+
+### 学而不思则罔
+
+请通过 `sorted()` 函数将一个由元组构成的 list 进行排序。
+
+n = [('Bob', 7500), ('Adam', 9200), ('Cart', 6600), ('Lisa', 8800)]，list n 是一个公司的薪资对照表。
+
+1. 请将 list n 通过名字来进行排序。
+
+2. 请将 list n 通过薪资来进行排序
+
+---
 
 相关代码：
+```
+	n = [('Bob', 75), ('Adam', 92), ('Cart', 66), ('Lisa', 88)]
 
-	def is_prime(n) :
-		if n == 1 or n == 0:
-			return False
-		for i in range(2, n-1) :
-			if n % i == 0 :
-				return False
-		return True  
-		
-		l=list(filter(is_prime, range(101)))
-		print('100以内的素数:', l)
+	l1 = sorted(n, key = lambda x : x[0])
 
+	l2 = sorted(n, key = lambda x : -x[1])
+
+	print('第一题结果：', l1)
+
+	print('第二题的结果:', l2)
+```
 结果：
+```	
+	第一题结果： [('Adam', 92), ('Bob', 75), ('Cart', 66), ('Lisa', 88)]
 
-	100以内的素数: [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
-
-
+	第二题的结果: [('Adam', 92), ('Lisa', 88), ('Bob', 75), ('Cart', 66)]
+```
