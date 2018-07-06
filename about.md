@@ -1,11 +1,12 @@
 ---
 layout: page
 title: "About"
-description: "你的博客描述 " 
+description: "Python 之路" 
 header-img: "img/green.jpg"
 ---
 
-这一页填写你的自我介绍。
+#### A ROSE WOULD BY ANY OTHER NAME WILL SMELL AS SWEET —— W.William Shakespeare
+
 
 
 

@@ -1,8 +1,8 @@
 # Site settings
-title: Lyan大魔王 # 你的博客名字，可以定义修订
+title: Python 之路 # 你的博客名字，可以定义修订
 header-img: "img/green.jpg"
 tagline: "cn"  
-description: "My Little Horse"  # 一句话描述你的博客
+description: "The notes of Python"  # 一句话描述你的博客
 baseurl: ""
 url: "http://lyaniml.com"  # 此处填写你的博客地址 
 
@@ -10,7 +10,7 @@ url: "http://lyaniml.com"  # 此处填写你的博客地址
 owner: 
   name: " SENGLIN"  # 填写作者信息：名字
   email: Senglin75@163.com # 填写作者信息：邮箱
-  bio: "心血来潮之笔" # 填写作者信息：博客描述
+  bio: "Python 之路" # 填写作者信息：博客描述
 
 # Data
 gavatar: img/favicon.png # 浏览器地址栏小图标，可自定义更改
@@ -18,7 +18,7 @@ favicon: img/favicon.png # 浏览器地址栏小图标，可自定义更改
 
 douban_username:  # 你的豆瓣id
 twitter_username: 
-github_username: 
+github_username: Senglin75
 facebook_username: 
 weibo_username: 
 zhihu_username: 
