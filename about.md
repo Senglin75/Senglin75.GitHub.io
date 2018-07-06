@@ -5,7 +5,7 @@ description: "Python 之路"
 header-img: "img/green.jpg"
 ---
 
-#### A ROSE WOULD BY ANY OTHER NAME WILL SMELL AS SWEET —— W.William Shakespeare
+#### A ROSE BY ANY OTHER NAME WOULD SMELL AS SWEET —— W.William Shakespeare
 
 
 

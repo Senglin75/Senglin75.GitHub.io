@@ -8,4 +8,4 @@
 
 ## 理念
 
-**A ROSE WOULD BY ANY OTHER NAME WILL SMELL AS SWEET —— W.William Shakespeare**
+**A ROSE BY ANY OTHER NAME WOULD SMELL AS SWEET —— W.William Shakespeare**
